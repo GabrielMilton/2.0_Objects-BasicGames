@@ -39,6 +39,8 @@ public class BasicGameApp implements Runnable {
    
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
+    public Image tired;
+    public Image LittleG;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
@@ -65,6 +67,8 @@ public class BasicGameApp implements Runnable {
       //variable and objects
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
+        tired =  Toolkit.getDefaultToolkit().getImage("ImTired.jpg");
+        LittleG = Toolkit.getDefaultToolkit().getImage("Gabriel4.JPG");
 		astro = new Astronaut(500,300);
         Niamlikespickles = new Astronaut(400,400);
 
@@ -147,8 +151,8 @@ public class BasicGameApp implements Runnable {
         // Start adding things here
 
       //draw the image of the astronaut
-		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-        g.drawImage(astroPic,Niamlikespickles.xpos,Niamlikespickles.ypos,Niamlikespickles.width, Niamlikespickles.height, null);
+		g.drawImage(LittleG, astro.xpos, astro.ypos, astro.width, astro.height, null);
+        g.drawImage(tired,Niamlikespickles.xpos,Niamlikespickles.ypos,Niamlikespickles.width, Niamlikespickles.height, null);
         g.setColor(Color.blue);
 // end of adding things
 		g.dispose();

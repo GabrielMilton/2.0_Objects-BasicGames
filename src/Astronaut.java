@@ -28,8 +28,8 @@ public class Astronaut {
     public Astronaut(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =1;
-        dy =0;
+        dx =5;
+        dy =5;
         width = 60;
         height = 60;
         isAlive = true;
@@ -40,8 +40,21 @@ public class Astronaut {
     public void move() {
        if(xpos>=1000 - width){
         dx =-dx ;;
-
     }
+       if(xpos<=0){
+           dx= -dx;
+       }
+        if(ypos<=0){
+            dy= -dy;
+        }
+       if(ypos>=690-height){
+           dy = -dy;
+
+       }
+
+
+
+
         xpos = xpos + dx;
         ypos = ypos + dy;
  
