@@ -41,11 +41,13 @@ public class BasicGameApp implements Runnable {
 	public Image astroPic;
     public Image tired;
     public Image LittleG;
+    public Image Niastroid;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
     private Astronaut Niamlikespickles;
+    private Niastroid Niamthemenece;
 
 
    // Main method definition
@@ -79,8 +81,11 @@ public class BasicGameApp implements Runnable {
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
         tired =  Toolkit.getDefaultToolkit().getImage("ImTired.jpg");
         LittleG = Toolkit.getDefaultToolkit().getImage("Gabriel4.JPG");
-		astro = new Astronaut(500,300);
+        Niastroid = Toolkit.getDefaultToolkit().getImage("Niastroid.jpg");
+
+		astro = new Astronaut(400,200);
         Niamlikespickles = new Astronaut(randx,randy);
+        Niamthemenece = new Niastroid(100,200);
 
 
 	}// BasicGameApp()
@@ -110,6 +115,7 @@ public class BasicGameApp implements Runnable {
       //calls the move( ) code in the objects
 		astro.move();
         Niamlikespickles.move();
+        Niamthemenece.move();
 
 	}
 	
@@ -163,7 +169,7 @@ public class BasicGameApp implements Runnable {
       //draw the image of the astronaut
 		g.drawImage(LittleG, astro.xpos, astro.ypos, astro.width, astro.height, null);
         g.drawImage(tired,Niamlikespickles.xpos,Niamlikespickles.ypos,Niamlikespickles.width, Niamlikespickles.height, null);
-        g.setColor(Color.blue);
+        g.drawImage(Niastroid,Niamthemenece.xpos,Niamthemenece.ypos,Niamthemenece.width,Niamthemenece.height,null);
 // end of adding things
 		g.dispose();
 
