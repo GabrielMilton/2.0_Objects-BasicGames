@@ -42,12 +42,14 @@ public class BasicGameApp implements Runnable {
     public Image tired;
     public Image LittleG;
     public Image Niastroid;
+    public Image Tobyroid;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
     private Astronaut Niamlikespickles;
     private Niastroid Niamthemenece;
+    private Tobyroid  Tobyterror;
 
 
    // Main method definition
@@ -73,8 +75,17 @@ public class BasicGameApp implements Runnable {
       randx = (int)(Math.random()*999)+1;
 
       int randy = (int)(Math.random()*699)+1;
+      int randpx;
+      int randpy;
+      int randtx;
+      int randty;
+      randpx = (int)(Math.random()*999)+1;
+      randpy = (int)(Math.random()*699)+1;
+      randtx = (int)(Math.random()*999)+1;
+      randty = (int)(Math.random()*699)+1;
 
-      //todo make a varible rand y that generates a random number between 1-699
+
+                //todo make a varible rand y that generates a random number between 1-699
 
       //variable and objects
       //create (construct) the objects needed for the game and load up 
@@ -82,10 +93,12 @@ public class BasicGameApp implements Runnable {
         tired =  Toolkit.getDefaultToolkit().getImage("ImTired.jpg");
         LittleG = Toolkit.getDefaultToolkit().getImage("Gabriel4.JPG");
         Niastroid = Toolkit.getDefaultToolkit().getImage("Niastroid.jpg");
+        Tobyroid = Toolkit.getDefaultToolkit().getImage("Tobyroid.png");
 
-		astro = new Astronaut(400,200);
+		astro = new Astronaut(300,500);
         Niamlikespickles = new Astronaut(randx,randy);
-        Niamthemenece = new Niastroid(100,200);
+        Niamthemenece = new Niastroid(randpx,randpy);
+        Tobyterror = new Tobyroid(randtx,randty);
 
 
 	}// BasicGameApp()
@@ -116,6 +129,7 @@ public class BasicGameApp implements Runnable {
 		astro.move();
         Niamlikespickles.move();
         Niamthemenece.move();
+        Tobyterror.move();
 
 	}
 	
@@ -170,6 +184,7 @@ public class BasicGameApp implements Runnable {
 		g.drawImage(LittleG, astro.xpos, astro.ypos, astro.width, astro.height, null);
         g.drawImage(tired,Niamlikespickles.xpos,Niamlikespickles.ypos,Niamlikespickles.width, Niamlikespickles.height, null);
         g.drawImage(Niastroid,Niamthemenece.xpos,Niamthemenece.ypos,Niamthemenece.width,Niamthemenece.height,null);
+        g.drawImage(Tobyroid, Tobyterror.xpos,Tobyterror.ypos,Tobyterror.width,Tobyterror.height,null);
 // end of adding things
 		g.dispose();
 
