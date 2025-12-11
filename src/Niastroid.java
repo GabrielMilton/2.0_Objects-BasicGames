@@ -24,7 +24,7 @@
             public Niastroid(int pXpos, int pYpos) {
                 xpos = pXpos;
                 ypos = pYpos;
-                dx = 0;
+                dx = 5;
                 dy = 10;
                 width = 85;
                 height = 85;
@@ -44,7 +44,7 @@
 
                 }
 
-                if (ypos >= 700 - height) {
+                if (ypos >= 699 - height) {
                     ypos = 1;
 
 

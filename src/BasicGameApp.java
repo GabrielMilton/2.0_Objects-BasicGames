@@ -130,8 +130,30 @@ public class BasicGameApp implements Runnable {
         Niamlikespickles.move();
         Niamthemenece.move();
         Tobyterror.move();
+        crashing();
+
 
 	}
+
+    public void crashing(){
+        // check to see if my astros crash into eachother
+       if(astro.hitBox.intersects(Niamlikespickles.hitBox)){
+            System.out.println("CRASH!!!");
+            astro.dx = -astro.dx;
+            Niamlikespickles.dx = -Niamlikespickles.dx;
+           astro.dy = -astro.dy;
+           Niamlikespickles.dy = -Niamlikespickles.dy;
+
+
+
+
+
+       }
+
+
+
+
+    }
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
@@ -181,10 +203,13 @@ public class BasicGameApp implements Runnable {
         // Start adding things here
 
       //draw the image of the astronaut
+        g.drawImage(astroPic,astro.xpos,astro.ypos,astro.width, astro.height, null);
 		g.drawImage(LittleG, astro.xpos, astro.ypos, astro.width, astro.height, null);
         g.drawImage(tired,Niamlikespickles.xpos,Niamlikespickles.ypos,Niamlikespickles.width, Niamlikespickles.height, null);
         g.drawImage(Niastroid,Niamthemenece.xpos,Niamthemenece.ypos,Niamthemenece.width,Niamthemenece.height,null);
         g.drawImage(Tobyroid, Tobyterror.xpos,Tobyterror.ypos,Tobyterror.width,Tobyterror.height,null);
+        // use this to draw hitbox
+        g.drawRect(astro.hitBox.x,astro.hitBox.y, astro.hitBox.width,astro.hitBox.height);
 // end of adding things
 		g.dispose();
 
