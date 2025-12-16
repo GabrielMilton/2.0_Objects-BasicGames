@@ -13,6 +13,7 @@ public class Niastroid {
             public int height;
             public boolean isAlive;
             public Rectangle hitBox;
+            public boolean iscrasinhg;
 
 
             // METHOD DEFINITION SECTION
@@ -26,11 +27,12 @@ public class Niastroid {
             public Niastroid(int pXpos, int pYpos) {
                 xpos = pXpos;
                 ypos = pYpos;
-                dx = 5;
-                dy = 10;
+                dx = -5;
+                dy = 0;
                 width = 85;
                 height = 85;
-                isAlive = false;
+                isAlive = true;
+                iscrasinhg = false;
 
             } // constructor
 

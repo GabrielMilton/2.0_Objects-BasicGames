@@ -43,6 +43,7 @@ public class BasicGameApp implements Runnable {
     public Image GDAWG;
     public Image Niastroid;
     public Image Tobyroid;
+    public Image BackgroundPic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
@@ -94,11 +95,13 @@ public class BasicGameApp implements Runnable {
         GDAWG = Toolkit.getDefaultToolkit().getImage("GDAWG.png");
         Niastroid = Toolkit.getDefaultToolkit().getImage("Niastroid.jpg");
         Tobyroid = Toolkit.getDefaultToolkit().getImage("Tobyroid.png");
+        BackgroundPic = Toolkit.getDefaultToolkit().getImage("TheMichealsun.jpg");
 
 		astro = new Astronaut(300,500);
         Niamlikespickles = new Astronaut(randx,randy);
-        Niamthemenece = new Niastroid(randpx,randpy);
-        Tobyterror = new Tobyroid(randtx,randty);
+        Niamthemenece = new Niastroid(400,150);
+        //Niamthemenece.dx = -Niamthemenece.dx; - use this to change the dx or dy of two objects that come from the same class
+        Tobyterror = new Tobyroid(100,200);
 
 
 	}// BasicGameApp()
@@ -150,20 +153,32 @@ public class BasicGameApp implements Runnable {
 
 
        }
-        if(Niamthemenece.hitBox.intersects(Tobyterror.hitBox)){
+        if(Niamthemenece.hitBox.intersects(Tobyterror.hitBox)&&Niamthemenece.iscrasinhg == false){
             System.out.println("BOOM!!!");
-            Niamthemenece.dx = -Niamthemenece.dx;
+            Niamthemenece.height += 50;
+            Niamthemenece.iscrasinhg = true;
+            Niamthemenece.isAlive = false;
+
+
+
+
+
+         /*/  Niamthemenece.dx = -Niamthemenece.dx;
             Niamthemenece.dx = -Tobyterror.dx;
             Niamthemenece.dy = -Niamthemenece.dy;
             Niamthemenece.dy = -Tobyterror.dy;
+            /*/
 
 
 
 
 
         }
+// ! = saying we want the oppiste thing to happen
+    if(!Niamthemenece.hitBox.intersects(Tobyterror.hitBox)){
+        Niamthemenece.iscrasinhg = false;
 
-
+    }
 
     }
 	
@@ -210,22 +225,28 @@ public class BasicGameApp implements Runnable {
 
 	//paints things on the screen using bufferStrategy
 	private void render() {
-		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
-		g.clearRect(0, 0, WIDTH, HEIGHT);
+        Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
+        g.clearRect(0, 0, WIDTH, HEIGHT);
         // Start adding things here
+        g.drawImage(BackgroundPic, 0, 0, WIDTH, HEIGHT, null);
 
-      //draw the image of the astronaut
-        g.drawImage(astroPic,astro.xpos,astro.ypos,astro.width, astro.height, null);
-		g.drawImage(GDAWG, astro.xpos, astro.ypos, astro.width, astro.height, null);
-        g.drawImage(tired,Niamlikespickles.xpos,Niamlikespickles.ypos,Niamlikespickles.width, Niamlikespickles.height, null);
-        g.drawImage(Niastroid,Niamthemenece.xpos,Niamthemenece.ypos,Niamthemenece.width,Niamthemenece.height,null);
-        g.drawImage(Tobyroid, Tobyterror.xpos,Tobyterror.ypos,Tobyterror.width,Tobyterror.height,null);
-        // use this to draw hitbox
-        g.drawRect(astro.hitBox.x,astro.hitBox.y, astro.hitBox.width,astro.hitBox.height);
+        //draw the image of the astronaut
+        g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+
+        if (Niamthemenece.isAlive == true) {
+            g.drawImage(Niastroid, Niamthemenece.xpos, Niamthemenece.ypos, Niamthemenece.width, Niamthemenece.height, null);
+        }
+
+            g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+            g.drawImage(GDAWG, astro.xpos, astro.ypos, astro.width, astro.height, null);
+            g.drawImage(tired, Niamlikespickles.xpos, Niamlikespickles.ypos, Niamlikespickles.width, Niamlikespickles.height, null);
+            g.drawImage(Tobyroid, Tobyterror.xpos, Tobyterror.ypos, Tobyterror.width, Tobyterror.height, null);
+            // use this to draw hitbox
+            g.drawRect(astro.hitBox.x, astro.hitBox.y, astro.hitBox.width, astro.hitBox.height);
 
 // end of adding things
-		g.dispose();
+            g.dispose();
 
-		bufferStrategy.show();
-	}
-}
+            bufferStrategy.show();
+        }
+        }

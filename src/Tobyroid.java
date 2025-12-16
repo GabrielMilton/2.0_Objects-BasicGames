@@ -13,6 +13,7 @@ public class Tobyroid {
     public int height;
     public boolean isAlive;
     public Rectangle hitBox;
+    public boolean iscrasinhg;
 //a boolean to denote if the hero is alive or dead.
 
 
@@ -28,26 +29,27 @@ public class Tobyroid {
         xpos = pXpos;
         ypos = pYpos;
         dx = 5;
-        dy = 10;
+        dy = 0;
         width = 85;
         height = 85;
         isAlive = false;
         hitBox = new Rectangle(xpos,ypos,width,height);
+        iscrasinhg = false;
 
     } // constructor
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
         if (xpos >= 1000 - width) {
-            xpos = 0;
+            xpos = 0-width;
 
         }
-        if (xpos <= 0) {
+        if (xpos < 0-width) {
             xpos = 999 - width;
 
         }
 
-        if (ypos >= 700 - height) {
+        if (ypos >= 699 - height) {
             ypos = 1;
 
 
