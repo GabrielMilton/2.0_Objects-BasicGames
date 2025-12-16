@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Tobyroid {
 
     //VARIABLE DECLARATION SECTION
@@ -9,7 +11,9 @@ public class Tobyroid {
     public int dy;                    //the speed of the hero in the y direction
     public int width;
     public int height;
-    public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+    public boolean isAlive;
+    public Rectangle hitBox;
+//a boolean to denote if the hero is alive or dead.
 
 
     // METHOD DEFINITION SECTION
@@ -28,6 +32,7 @@ public class Tobyroid {
         width = 85;
         height = 85;
         isAlive = false;
+        hitBox = new Rectangle(xpos,ypos,width,height);
 
     } // constructor
 
@@ -54,6 +59,7 @@ public class Tobyroid {
         }
         xpos = xpos + dx;
         ypos = ypos + dy;
+        hitBox = new Rectangle(xpos,ypos,width,height);
     }
  }
 

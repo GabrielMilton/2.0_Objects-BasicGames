@@ -1,5 +1,6 @@
+import java.awt.*;
 
-        public class Niastroid {
+public class Niastroid {
 
             //VARIABLE DECLARATION SECTION
             //Here's where you state which variables you are going to use.
@@ -10,7 +11,8 @@
             public int dy;                    //the speed of the hero in the y direction
             public int width;
             public int height;
-            public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+            public boolean isAlive;
+            public Rectangle hitBox;
 
 
             // METHOD DEFINITION SECTION
@@ -56,6 +58,7 @@
                 }
                 xpos = xpos + dx;
                 ypos = ypos + dy;
+                hitBox = new Rectangle(xpos,ypos,width,height);
             }
         }
 //todo: make it warp when hit the top bootom

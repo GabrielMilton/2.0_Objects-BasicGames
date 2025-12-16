@@ -40,7 +40,7 @@ public class BasicGameApp implements Runnable {
 	public BufferStrategy bufferStrategy;
 	public Image astroPic;
     public Image tired;
-    public Image LittleG;
+    public Image GDAWG;
     public Image Niastroid;
     public Image Tobyroid;
 
@@ -91,7 +91,7 @@ public class BasicGameApp implements Runnable {
       //create (construct) the objects needed for the game and load up 
 		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
         tired =  Toolkit.getDefaultToolkit().getImage("ImTired.jpg");
-        LittleG = Toolkit.getDefaultToolkit().getImage("Gabriel4.JPG");
+        GDAWG = Toolkit.getDefaultToolkit().getImage("GDAWG.png");
         Niastroid = Toolkit.getDefaultToolkit().getImage("Niastroid.jpg");
         Tobyroid = Toolkit.getDefaultToolkit().getImage("Tobyroid.png");
 
@@ -133,6 +133,7 @@ public class BasicGameApp implements Runnable {
         crashing();
 
 
+
 	}
 
     public void crashing(){
@@ -149,7 +150,18 @@ public class BasicGameApp implements Runnable {
 
 
        }
+        if(Niamthemenece.hitBox.intersects(Tobyterror.hitBox)){
+            System.out.println("BOOM!!!");
+            Niamthemenece.dx = -Niamthemenece.dx;
+            Niamthemenece.dx = -Tobyterror.dx;
+            Niamthemenece.dy = -Niamthemenece.dy;
+            Niamthemenece.dy = -Tobyterror.dy;
 
+
+
+
+
+        }
 
 
 
@@ -204,12 +216,13 @@ public class BasicGameApp implements Runnable {
 
       //draw the image of the astronaut
         g.drawImage(astroPic,astro.xpos,astro.ypos,astro.width, astro.height, null);
-		g.drawImage(LittleG, astro.xpos, astro.ypos, astro.width, astro.height, null);
+		g.drawImage(GDAWG, astro.xpos, astro.ypos, astro.width, astro.height, null);
         g.drawImage(tired,Niamlikespickles.xpos,Niamlikespickles.ypos,Niamlikespickles.width, Niamlikespickles.height, null);
         g.drawImage(Niastroid,Niamthemenece.xpos,Niamthemenece.ypos,Niamthemenece.width,Niamthemenece.height,null);
         g.drawImage(Tobyroid, Tobyterror.xpos,Tobyterror.ypos,Tobyterror.width,Tobyterror.height,null);
         // use this to draw hitbox
         g.drawRect(astro.hitBox.x,astro.hitBox.y, astro.hitBox.width,astro.hitBox.height);
+
 // end of adding things
 		g.dispose();
 
