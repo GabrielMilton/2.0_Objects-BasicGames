@@ -153,11 +153,11 @@ public class BasicGameApp implements Runnable {
 
 
        }
-        if(Niamthemenece.hitBox.intersects(Tobyterror.hitBox)&&Niamthemenece.iscrasinhg == false){
+        if(Niamthemenece.hitBox.intersects(astro.hitBox)&&Niamthemenece.iscrasinhg == false){
             System.out.println("BOOM!!!");
             Niamthemenece.height += 50;
             Niamthemenece.iscrasinhg = true;
-            Niamthemenece.isAlive = false;
+            astro.isAlive = false;
 
 
 
@@ -175,10 +175,38 @@ public class BasicGameApp implements Runnable {
 
         }
 // ! = saying we want the oppiste thing to happen
-    if(!Niamthemenece.hitBox.intersects(Tobyterror.hitBox)){
-        Niamthemenece.iscrasinhg = false;
+    if(!Niamthemenece.hitBox.intersects(astro.hitBox)){
+        astro.iscrasinhg = false;
 
     }
+
+        if(!Tobyterror.hitBox.intersects(Niamlikespickles.hitBox)){
+            Niamlikespickles.iscrasinhg = false;
+
+        }
+        if(Tobyterror.hitBox.intersects(Niamlikespickles.hitBox)&&Niamlikespickles.iscrasinhg == false){
+            System.out.println("BOOM!!!");
+            Tobyterror.height += 50;
+            Niamlikespickles.iscrasinhg = true;
+            Niamlikespickles.isAlive = false;
+
+
+
+
+
+         /*/  Niamthemenece.dx = -Niamthemenece.dx;
+            Niamthemenece.dx = -Tobyterror.dx;
+            Niamthemenece.dy = -Niamthemenece.dy;
+            Niamthemenece.dy = -Tobyterror.dy;
+            /*/
+
+
+
+
+
+        }
+
+
 
     }
 	
@@ -230,19 +258,21 @@ public class BasicGameApp implements Runnable {
         // Start adding things here
         g.drawImage(BackgroundPic, 0, 0, WIDTH, HEIGHT, null);
 
-        //draw the image of the astronaut
-        g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+        // When the niamastroid intercects with gdawg, GDAWG disapears
+        if (astro.isAlive == true) {
+            g.drawImage(GDAWG, astro.xpos, astro.ypos, astro.width, astro.height, null);
+            g.drawRect(astro.hitBox.x, astro.hitBox.y, astro.hitBox.width, astro.hitBox.height);
 
-        if (Niamthemenece.isAlive == true) {
-            g.drawImage(Niastroid, Niamthemenece.xpos, Niamthemenece.ypos, Niamthemenece.width, Niamthemenece.height, null);
+        }
+        //
+        if (Niamlikespickles.isAlive == true) {
+            g.drawImage(tired, Niamlikespickles.xpos, Niamlikespickles.ypos, Niamlikespickles.width, Niamlikespickles.height, null);
+
         }
 
-            g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-            g.drawImage(GDAWG, astro.xpos, astro.ypos, astro.width, astro.height, null);
-            g.drawImage(tired, Niamlikespickles.xpos, Niamlikespickles.ypos, Niamlikespickles.width, Niamlikespickles.height, null);
+        g.drawImage(Niastroid, Niamthemenece.xpos, Niamthemenece.ypos, Niamthemenece.width, Niamthemenece.height, null);
             g.drawImage(Tobyroid, Tobyterror.xpos, Tobyterror.ypos, Tobyterror.width, Tobyterror.height, null);
             // use this to draw hitbox
-            g.drawRect(astro.hitBox.x, astro.hitBox.y, astro.hitBox.width, astro.hitBox.height);
 
 // end of adding things
             g.dispose();

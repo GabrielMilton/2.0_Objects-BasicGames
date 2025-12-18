@@ -16,6 +16,7 @@ public class Astronaut {
     public int height;
     public boolean isAlive;
     public Rectangle hitBox;
+    public boolean iscrasinhg;
 
 
 
@@ -36,6 +37,7 @@ public class Astronaut {
         height = 60;
         isAlive = true;
         hitBox = new Rectangle(xpos,ypos,width,height);
+        iscrasinhg = false;
  
     } // constructor
 
