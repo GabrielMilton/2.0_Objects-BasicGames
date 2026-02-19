@@ -13,6 +13,8 @@
 
 //Graphics Libraries
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
 import javax.swing.JFrame;
@@ -21,8 +23,9 @@ import javax.swing.JPanel;
 
 //*******************************************************************************
 // Class Definition Section
+// step 1: implent keylisitener
 
-public class BasicGameApp implements Runnable {
+public class BasicGameApp implements Runnable, KeyListener {
 
    //Variable Definition Section
    //Declare the variables used in the program 
@@ -233,6 +236,9 @@ public class BasicGameApp implements Runnable {
       canvas = new Canvas();  
       canvas.setBounds(0, 0, WIDTH, HEIGHT);
       canvas.setIgnoreRepaint(true);
+
+      //step 2: as canvas as the keylisten
+       canvas.addKeyListener(this);
    
       panel.add(canvas);  // adds the canvas to the panel.
    
@@ -279,4 +285,44 @@ public class BasicGameApp implements Runnable {
 
             bufferStrategy.show();
         }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("key typed " + e.getKeyCode());
+    // up arrow is 38
+        if (e.getKeyCode()== 38){
+            System.out.println("pressed up arrow");
+            Niamthemenece.ypos = Niamthemenece.ypos - 5;
+            Niamthemenece.dy = -Math.abs(Niamthemenece.dy);
+        }
+        if (e.getKeyCode()== 40){
+            System.out.println("pressed down arrow");
+            Niamthemenece.ypos = Niamthemenece.ypos + 5;
+            Niamthemenece.dy = Math.abs(Niamthemenece.dy);
+        }
+        if (e.getKeyCode()== 39){
+            System.out.println("pressed right arrow");
+            Niamthemenece.xpos = Niamthemenece.xpos + 5;
+            Niamthemenece.dx = Math.abs(Niamthemenece.dx);
+
+
+
+        }
+        if (e.getKeyCode()== 37){
+            System.out.println("pressed left arrow");
+            Niamthemenece.xpos = Niamthemenece.xpos -5;
+            Niamthemenece.dx = -Math.abs(Niamthemenece.dx);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+    //step 3 add keylisitener method
         }

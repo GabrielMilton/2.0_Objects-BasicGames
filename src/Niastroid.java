@@ -28,7 +28,7 @@ public class Niastroid {
                 xpos = pXpos;
                 ypos = pYpos;
                 dx = -5;
-                dy = 0;
+                dy = 4 ;
                 width = 85;
                 height = 85;
                 isAlive = true;
