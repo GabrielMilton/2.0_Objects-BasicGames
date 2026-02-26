@@ -15,6 +15,8 @@
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
 import javax.swing.JFrame;
@@ -24,8 +26,8 @@ import javax.swing.JPanel;
 //*******************************************************************************
 // Class Definition Section
 // step 1: implent keylisitener
-
-public class BasicGameApp implements Runnable, KeyListener {
+// step 1" omplent Mouslisinter
+public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
    //Variable Definition Section
    //Declare the variables used in the program 
@@ -239,7 +241,8 @@ public class BasicGameApp implements Runnable, KeyListener {
 
       //step 2: as canvas as the keylisten
        canvas.addKeyListener(this);
-   
+       //step: 2 set canvas
+       canvas.addMouseListener(this);
       panel.add(canvas);  // adds the canvas to the panel.
    
       // frame operations
@@ -300,6 +303,7 @@ public class BasicGameApp implements Runnable, KeyListener {
             Niamthemenece.ypos = Niamthemenece.ypos - 5;
             Niamthemenece.dy = -Math.abs(Niamthemenece.dy);
         }
+
         if (e.getKeyCode()== 40){
             System.out.println("pressed down arrow");
             Niamthemenece.ypos = Niamthemenece.ypos + 5;
@@ -320,9 +324,50 @@ public class BasicGameApp implements Runnable, KeyListener {
         }
     }
 
+    //Step3: added
     @Override
     public void keyReleased(KeyEvent e) {
+       /*/ if(e.getKeyCode() == 38){
+            System.out.println("not pressed up arrow");
+            Niamthemenece.dy = 0;
+        }
 
+        if(e.getKeyCode() == 40){
+            System.out.println("not pressed up arrow");
+            Niamthemenece.dy = 0;
+        }/*/
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        System.out.println(e.getPoint());
+        astro.xpos = e.getX();
+        astro.ypos = e.getY();
+        System.out.println(e.getClickCount());
+        if(e.getClickCount()==2){
+            astro.width = astro.width*2;
+            astro.height = astro.height*2;
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        System.out.println("enterred!!");
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
     //step 3 add keylisitener method
         }
