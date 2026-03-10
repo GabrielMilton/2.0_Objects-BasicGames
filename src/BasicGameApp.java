@@ -50,6 +50,8 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     public Image Tobyroid;
     public Image BackgroundPic;
 
+    public Niastroid[] roids;
+
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
@@ -108,7 +110,11 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         //Niamthemenece.dx = -Niamthemenece.dx; - use this to change the dx or dy of two objects that come from the same class
         Tobyterror = new Tobyroid(100,200);
 
+        roids = new Niastroid[5];
 
+        for(int n=0; n<roids.length; n=n+1) {
+            roids[n] = new Niastroid((int)(Math.random()*1000),(int)(Math.random()*700));
+        }
 	}// BasicGameApp()
 
    
@@ -160,7 +166,8 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
        }
         if(Niamthemenece.hitBox.intersects(astro.hitBox)&&Niamthemenece.iscrasinhg == false){
             System.out.println("BOOM!!!");
-            Niamthemenece.height += 50;
+            Niamthemenece.height += astro.height;
+            Niamthemenece.width += astro.width;
             Niamthemenece.iscrasinhg = true;
             astro.isAlive = false;
 
@@ -278,7 +285,9 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             g.drawImage(tired, Niamlikespickles.xpos, Niamlikespickles.ypos, Niamlikespickles.width, Niamlikespickles.height, null);
 
         }
-
+        for(int r=0; r<roids.length; r=r+1) {
+            g.drawImage(Niastroid,roids[r].xpos,roids[r].ypos,roids[r].height,roids[r].width,null);
+        }
         g.drawImage(Niastroid, Niamthemenece.xpos, Niamthemenece.ypos, Niamthemenece.width, Niamthemenece.height, null);
             g.drawImage(Tobyroid, Tobyterror.xpos, Tobyterror.ypos, Tobyterror.width, Tobyterror.height, null);
             // use this to draw hitbox
