@@ -19,7 +19,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
-import java.lang.reflect.Array;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -56,6 +55,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
 	private Astronaut astro;
+    private GDAWG Giddy;
     private Astronaut Niamlikespickles;
     private Niastroid Niamthemenece;
     private Tobyroid  Tobyterror;
@@ -105,7 +105,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         Tobyroid = Toolkit.getDefaultToolkit().getImage("Tobyroid.png");
         BackgroundPic = Toolkit.getDefaultToolkit().getImage("TheMichealsun.jpg");
 
-		astro = new Astronaut(300,500);
+		Giddy = new GDAWG(randx,randy);
         Niamlikespickles = new Astronaut(randx,randy);
         Niamthemenece = new Niastroid(400,150);
         //Niamthemenece.dx = -Niamthemenece.dx; - use this to change the dx or dy of two objects that come from the same class
@@ -119,13 +119,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 	}// BasicGameApp()
 
 
-    public void MoveAsteroid(){
-        for(int m=0; m<roids.length; m=m+1){
-            roids[m].move();
-            roids[m].dx = 30;
-            roids[m].dx = 32;
-        }
-    }
+
    
 //*******************************************************************************
 //User Method Section
@@ -153,8 +147,12 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         Niamlikespickles.move();
         Niamthemenece.move();
         Tobyterror.move();
+        GDAWG.move();
         crashing();
-        MoveAsteroid();
+        for(int m=0; m<roids.length; m=m+1){
+            roids[m].move();
+
+        }
 
 
 
@@ -222,7 +220,11 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             Niamthemenece.dy = -Tobyterror.dy;
             /*/
 
-
+        for(int c=0; c<roids.length; c=c+1){
+            if (roids[c].hitBox.intersects(astro.hitBox)&& astro.iscrasinhg== false){
+                System.out.println("astroid crash");
+            }
+        }
 
 
 
@@ -364,7 +366,6 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println(e.getPoint());
         astro.xpos = e.getX();
         astro.ypos = e.getY();
         System.out.println(e.getClickCount());
