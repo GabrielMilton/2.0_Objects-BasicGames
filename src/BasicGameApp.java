@@ -19,6 +19,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
+import java.lang.reflect.Array;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -117,6 +118,14 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         }
 	}// BasicGameApp()
 
+
+    public void MoveAsteroid(){
+        for(int m=0; m<roids.length; m=m+1){
+            roids[m].move();
+            roids[m].dx = 30;
+            roids[m].dx = 32;
+        }
+    }
    
 //*******************************************************************************
 //User Method Section
@@ -145,6 +154,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         Niamthemenece.move();
         Tobyterror.move();
         crashing();
+        MoveAsteroid();
 
 
 
