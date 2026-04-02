@@ -147,7 +147,6 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         Niamlikespickles.move();
         Niamthemenece.move();
         Tobyterror.move();
-        GDAWG.move();
         crashing();
         for(int m=0; m<roids.length; m=m+1){
             roids[m].move();
